@@ -174,6 +174,34 @@ const QUESTIONS = {
         "Sí, y queremos ir más lejos",
       ],
     },
+    {
+      id:"cliente_persigue", area:"Comunicación", phase:"depth",
+      question:"¿Cuántas veces al mes un cliente os contacta para preguntar por el estado de algo que ya deberíais haberle comunicado?",
+      type:"chips",
+      options:["Nunca","1-3 veces","4-10 veces","Más de 10 veces"],
+    },
+    {
+      id:"dependencia_persona", area:"Riesgo operativo", phase:"depth",
+      question:"Si vuestro mejor empleado se fuera mañana, ¿cuánto conocimiento operativo se iría con él?",
+      type:"pills",
+      options:[
+        "Casi nada, todo está documentado y sistematizado",
+        "Algo, pero nos adaptaríamos en pocos días",
+        "Bastante, tardaríamos semanas en recuperarnos",
+        "Crítico — hay procesos que solo domina esa persona",
+      ],
+    },
+    {
+      id:"tiempo_recuperado", area:"Visión", phase:"depth",
+      question:"Si mañana recuperaseis todo ese tiempo que dedicáis a tareas manuales, ¿en qué lo invertiríais?",
+      type:"pills",
+      options:[
+        "Captar más clientes y generar más negocio",
+        "Mejorar la calidad del servicio actual",
+        "Reducir la carga y mejorar la vida del equipo",
+        "Lanzar nuevos servicios o líneas de negocio",
+      ],
+    },
   ],
 
   /* ══ GESTORÍA ══════════════════════════════════════════════════ */
@@ -270,6 +298,18 @@ const QUESTIONS = {
       options:["Solo el gestor/a principal","1-2 administrativos","3-5 personas","Más de 5 personas"],
     },
     {
+      id:"onboarding_cliente", area:"Onboarding", phase:"process",
+      question:"¿Cómo es el proceso cuando dais de alta a un nuevo cliente en la gestoría?",
+      type:"pills",
+      options:[
+        "Totalmente manual — emails, llamadas y papeles hasta tener todo",
+        "Tenemos un checklist pero el seguimiento es manual",
+        "Enviamos un formulario o carpeta compartida para que suban documentación",
+        "Proceso semi-automatizado con plantillas y recordatorios",
+        "Onboarding digitalizado con portal de cliente y verificación automática",
+      ],
+    },
+    {
       id:"automatizacion_previo", area:"Automatización", phase:"depth",
       question:"¿Tenéis alguna automatización funcionando actualmente en la gestoría?",
       type:"pills",
@@ -279,6 +319,34 @@ const QUESTIONS = {
         "Zapier/Make con algunos flujos básicos",
         "Automatizaciones robustas que ahorran tiempo real",
         "Hemos intentado y no ha funcionado bien",
+      ],
+    },
+    {
+      id:"cliente_persigue", area:"Comunicación", phase:"depth",
+      question:"¿Cuántas veces al mes un cliente os contacta para preguntar por el estado de algo que ya deberíais haberle comunicado?",
+      type:"chips",
+      options:["Nunca","1-3 veces","4-10 veces","Más de 10 veces"],
+    },
+    {
+      id:"dependencia_persona", area:"Riesgo operativo", phase:"depth",
+      question:"Si vuestro mejor empleado se fuera mañana, ¿cuánto conocimiento operativo se iría con él?",
+      type:"pills",
+      options:[
+        "Casi nada, todo está documentado y sistematizado",
+        "Algo, pero nos adaptaríamos en pocos días",
+        "Bastante, tardaríamos semanas en recuperarnos",
+        "Crítico — hay procesos que solo domina esa persona",
+      ],
+    },
+    {
+      id:"tiempo_recuperado", area:"Visión", phase:"depth",
+      question:"Si mañana recuperaseis todo ese tiempo que dedicáis a tareas manuales, ¿en qué lo invertiríais?",
+      type:"pills",
+      options:[
+        "Captar más clientes y generar más negocio",
+        "Mejorar la calidad del servicio actual",
+        "Reducir la carga y mejorar la vida del equipo",
+        "Lanzar nuevos servicios o líneas de negocio",
       ],
     },
   ],
@@ -359,6 +427,42 @@ const QUESTIONS = {
       options:["Menos del 20%","20 – 40%","40 – 60%","Más del 60% — es el cuello de botella principal"],
     },
     {
+      id:"onboarding_laboral", area:"Onboarding laboral", phase:"process",
+      question:"Cuando un cliente contrata a un nuevo empleado, ¿cómo gestionáis todo el proceso de alta?",
+      type:"pills",
+      options:[
+        "El cliente nos envía los datos por WhatsApp o email y lo hacemos todo manual",
+        "Tenemos plantillas de contrato pero el resto es manual (SEPE, SS, bienvenida)",
+        "Formulario estandarizado + checklist interno de trámites",
+        "Proceso semi-automatizado con generación de contrato y alta en SS",
+        "Workflow completo: datos → contrato → alta SS → documentación empleado automático",
+      ],
+    },
+    {
+      id:"convenios_normativa", area:"Actualización normativa", phase:"process",
+      question:"¿Cómo os mantenéis al día de cambios en convenios colectivos y normativa laboral que afectan a vuestros clientes?",
+      type:"pills",
+      options:[
+        "Consultamos fuentes manualmente cuando surge una duda",
+        "Alertas del BOE/BOJA pero las revisamos cuando podemos",
+        "Suscripciones a editoriales jurídicas (Lefebvre, Aranzadi...)",
+        "Base de datos actualizada + revisión periódica del equipo",
+        "Sistema con alertas automáticas por convenio y sector de cada cliente",
+      ],
+    },
+    {
+      id:"reporting_laboral", area:"Reporting a clientes", phase:"process",
+      question:"¿Cómo informáis a vuestras empresas cliente del estado de sus obligaciones laborales y de Seguridad Social?",
+      type:"pills",
+      options:[
+        "Llamada o email puntual solo cuando hay algo urgente",
+        "Emails periódicos que redactamos manualmente",
+        "Informes en PDF que preparamos cada mes",
+        "Dashboard o portal donde el cliente consulta el estado",
+        "Informes automáticos con alertas proactivas de vencimientos",
+      ],
+    },
+    {
       id:"automatizacion_previo", area:"Automatización", phase:"depth",
       question:"¿Habéis intentado automatizar algún proceso laboral anteriormente?",
       type:"pills",
@@ -368,6 +472,34 @@ const QUESTIONS = {
         "Sí, con un proveedor — experiencia mixta",
         "Sí, tenemos flujos funcionando bien",
         "Lo necesitamos urgentemente",
+      ],
+    },
+    {
+      id:"cliente_persigue", area:"Comunicación", phase:"depth",
+      question:"¿Cuántas veces al mes un cliente os contacta para preguntar por el estado de algo que ya deberíais haberle comunicado?",
+      type:"chips",
+      options:["Nunca","1-3 veces","4-10 veces","Más de 10 veces"],
+    },
+    {
+      id:"dependencia_persona", area:"Riesgo operativo", phase:"depth",
+      question:"Si vuestro mejor empleado se fuera mañana, ¿cuánto conocimiento operativo se iría con él?",
+      type:"pills",
+      options:[
+        "Casi nada, todo está documentado y sistematizado",
+        "Algo, pero nos adaptaríamos en pocos días",
+        "Bastante, tardaríamos semanas en recuperarnos",
+        "Crítico — hay procesos que solo domina esa persona",
+      ],
+    },
+    {
+      id:"tiempo_recuperado", area:"Visión", phase:"depth",
+      question:"Si mañana recuperaseis todo ese tiempo que dedicáis a tareas manuales, ¿en qué lo invertiríais?",
+      type:"pills",
+      options:[
+        "Captar más clientes y generar más negocio",
+        "Mejorar la calidad del servicio actual",
+        "Reducir la carga y mejorar la vida del equipo",
+        "Lanzar nuevos servicios o líneas de negocio",
       ],
     },
   ],
@@ -460,6 +592,30 @@ const QUESTIONS = {
       ],
     },
     {
+      id:"consentimientos", area:"Documentación legal", phase:"process",
+      question:"¿Cómo gestionáis la firma de consentimientos informados y documentación legal del paciente?",
+      type:"pills",
+      options:[
+        "Papel impreso que firma el paciente en recepción",
+        "PDF que enviamos por email y nos devuelven firmado",
+        "Formulario digital pero la firma sigue siendo en papel",
+        "Firma digital integrada en el software clínico",
+        "Firma digital + archivo automático + recordatorio si falta alguno",
+      ],
+    },
+    {
+      id:"resenas_reputacion", area:"Reputación online", phase:"process",
+      question:"¿Pedís reseñas a pacientes satisfechos de forma sistemática?",
+      type:"pills",
+      options:[
+        "No, nunca lo hemos hecho",
+        "A veces lo pedimos verbalmente pero sin sistema",
+        "Enviamos un link manualmente después de la cita",
+        "Mensaje automático post-cita pidiendo reseña",
+        "Secuencia automatizada: satisfacción → reseña → seguimiento",
+      ],
+    },
+    {
       id:"automatizacion_previo", area:"Automatización", phase:"depth",
       question:"¿Tenéis actualmente alguna automatización funcionando en la clínica?",
       type:"pills",
@@ -469,6 +625,34 @@ const QUESTIONS = {
         "Algún flujo en WhatsApp Business",
         "Varias automatizaciones activas que funcionan bien",
         "Hemos probado y no ha cuajado",
+      ],
+    },
+    {
+      id:"cliente_persigue", area:"Comunicación", phase:"depth",
+      question:"¿Cuántas veces al mes un paciente os contacta para preguntar por el estado de algo que ya deberíais haberle comunicado?",
+      type:"chips",
+      options:["Nunca","1-3 veces","4-10 veces","Más de 10 veces"],
+    },
+    {
+      id:"dependencia_persona", area:"Riesgo operativo", phase:"depth",
+      question:"Si vuestro mejor empleado se fuera mañana, ¿cuánto conocimiento operativo se iría con él?",
+      type:"pills",
+      options:[
+        "Casi nada, todo está documentado y sistematizado",
+        "Algo, pero nos adaptaríamos en pocos días",
+        "Bastante, tardaríamos semanas en recuperarnos",
+        "Crítico — hay procesos que solo domina esa persona",
+      ],
+    },
+    {
+      id:"tiempo_recuperado", area:"Visión", phase:"depth",
+      question:"Si mañana recuperaseis todo ese tiempo que dedicáis a tareas manuales, ¿en qué lo invertiríais?",
+      type:"pills",
+      options:[
+        "Captar más pacientes y generar más negocio",
+        "Mejorar la calidad del servicio actual",
+        "Reducir la carga y mejorar la vida del equipo",
+        "Lanzar nuevos servicios o líneas de negocio",
       ],
     },
   ],
@@ -560,6 +744,30 @@ const QUESTIONS = {
       ],
     },
     {
+      id:"reporting_propietario", area:"Reporting a propietarios", phase:"process",
+      question:"¿Cómo informáis a los propietarios del estado de la comercialización de su inmueble?",
+      type:"pills",
+      options:[
+        "Llamada o WhatsApp cuando hay algo que contar",
+        "Email manual con resumen cuando nos lo piden",
+        "Informe periódico que preparamos a mano",
+        "Informe automático con estadísticas de visitas y contactos",
+        "Dashboard en tiempo real con visitas, feedback y estado",
+      ],
+    },
+    {
+      id:"valoracion_inmueble", area:"Valoración", phase:"process",
+      question:"¿Cómo valoráis los inmuebles para fijar el precio de salida?",
+      type:"pills",
+      options:[
+        "Intuición y experiencia del agente",
+        "Comparamos manualmente con portales (Idealista, Fotocasa...)",
+        "Herramienta de valoración automática básica (AVM)",
+        "AVM + ajuste manual con datos de mercado propios",
+        "Valoración automatizada con datos en tiempo real e históricos de zona",
+      ],
+    },
+    {
       id:"automatizacion_previo", area:"Automatización", phase:"depth",
       question:"¿Habéis implementado ya alguna automatización en la agencia?",
       type:"pills",
@@ -569,6 +777,34 @@ const QUESTIONS = {
         "Algún flujo en Make / Zapier",
         "Tenemos automatizaciones activas que funcionan bien",
         "Lo hemos intentado y no ha dado el resultado esperado",
+      ],
+    },
+    {
+      id:"cliente_persigue", area:"Comunicación", phase:"depth",
+      question:"¿Cuántas veces al mes un cliente os contacta para preguntar por el estado de algo que ya deberíais haberle comunicado?",
+      type:"chips",
+      options:["Nunca","1-3 veces","4-10 veces","Más de 10 veces"],
+    },
+    {
+      id:"dependencia_persona", area:"Riesgo operativo", phase:"depth",
+      question:"Si vuestro mejor empleado se fuera mañana, ¿cuánto conocimiento operativo se iría con él?",
+      type:"pills",
+      options:[
+        "Casi nada, todo está documentado y sistematizado",
+        "Algo, pero nos adaptaríamos en pocos días",
+        "Bastante, tardaríamos semanas en recuperarnos",
+        "Crítico — hay procesos que solo domina esa persona",
+      ],
+    },
+    {
+      id:"tiempo_recuperado", area:"Visión", phase:"depth",
+      question:"Si mañana recuperaseis todo ese tiempo que dedicáis a tareas manuales, ¿en qué lo invertiríais?",
+      type:"pills",
+      options:[
+        "Captar más clientes y generar más negocio",
+        "Mejorar la calidad del servicio actual",
+        "Reducir la carga y mejorar la vida del equipo",
+        "Lanzar nuevos servicios o líneas de negocio",
       ],
     },
   ],
@@ -1191,7 +1427,7 @@ Incluye entre 3 y 5 procesos en priorities. Ordénalos por impacto económico re
             Índice de Madurez Operacional
           </h1>
           <p style={{ fontSize:16,color:T.textSub,lineHeight:1.7,maxWidth:560 }}>
-            Descubre en solo 12 preguntas dónde pierde tiempo y dinero tu empresa. Obtén un roadmap de automatización priorizado por impacto económico y una estimación real de ahorro mensual.
+            Descubre en solo 15 preguntas dónde pierde tiempo y dinero tu empresa. Obtén un roadmap de automatización priorizado por impacto económico y una estimación real de ahorro mensual.
           </p>
         </div>
 
