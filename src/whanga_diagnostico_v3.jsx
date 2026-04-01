@@ -942,6 +942,7 @@ export default function App() {
   /* State */
   const [phase, setPhase]           = useState("consent");
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showLopd, setShowLopd]     = useState(false);
   const [consent, setConsent]       = useState({ accepted:false, marketing:false, ts:null });
   const [consentErr, setConsentErr] = useState(false);
   const [sector, setSector]         = useState(urlSector||null);
@@ -1174,7 +1175,7 @@ Incluye entre 3 y 5 procesos en priorities. Ordénalos por impacto económico re
             Índice de Madurez Operacional
           </h1>
           <p style={{ fontSize:16,color:T.textSub,lineHeight:1.7,maxWidth:560 }}>
-            En 12-15 preguntas, obtenéis un diagnóstico detallado de vuestros procesos y un roadmap de automatización con estimación de ROI.
+            Descubre en solo 12 preguntas dónde pierde tiempo y dinero tu empresa. Obtén un roadmap de automatización priorizado por impacto económico y una estimación real de ahorro mensual.
           </p>
         </div>
 
@@ -1193,52 +1194,52 @@ Incluye entre 3 y 5 procesos en priorities. Ordénalos por impacto económico re
           ))}
         </div>
 
-        {/* LOPD — primera capa */}
+        {/* LOPD — primera capa (colapsable) */}
         <div style={{ border:`1px solid ${T.border}`,borderRadius:10,marginBottom:24,overflow:"hidden" }}>
-          <div style={{ background:T.bg,padding:"10px 16px",borderBottom:`1px solid ${T.border}`,display:"flex",alignItems:"center",gap:8 }}>
+          <div onClick={()=>setShowLopd(v=>!v)} style={{ background:T.bg,padding:"10px 16px",display:"flex",alignItems:"center",gap:8,cursor:"pointer",userSelect:"none" }}>
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L2 3v4c0 2.76 2 4.74 4.5 5.5C9 11.74 11 9.76 11 7V3L6.5 1z" stroke={T.textMut} strokeWidth="1.2" fill="none"/></svg>
-            <span style={{ fontSize:11,fontWeight:600,color:T.textMut,textTransform:"uppercase",letterSpacing:"0.05em" }}>Información básica sobre protección de datos</span>
+            <span style={{ fontSize:11,fontWeight:600,color:T.textMut,textTransform:"uppercase",letterSpacing:"0.05em",flex:1 }}>Información básica sobre protección de datos</span>
+            <svg width="10" height="10" viewBox="0 0 10 10" style={{ transform:showLopd?"rotate(180deg)":"rotate(0deg)",transition:"transform 0.2s" }}><path d="M2 3.5l3 3 3-3" stroke={T.textMut} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
           </div>
-          {[
-            ["Responsable","Whanga Media Ltd · admin@whangamedia.com"],
-            ["Finalidad","Elaborar diagnóstico de madurez operacional y almacenar resultados para seguimiento comercial"],
-            ["Legitimación","Consentimiento del interesado (Art. 6.1.a RGPD)"],
-            ["Destinatarios","Sin cesiones a terceros salvo obligación legal. Encargados técnicos: Supabase EU y Anthropic API (CCT)"],
-            ["Sus derechos","Acceso, rectificación, supresión, limitación, portabilidad y oposición → admin@whangamedia.com"],
-          ].map(([k,v])=>(
-            <div key={k} style={{ display:"flex",padding:"9px 16px",borderBottom:`1px solid ${T.border}` }}>
-              <span style={{ fontSize:12,fontWeight:600,color:T.textMut,width:110,flexShrink:0,paddingTop:1 }}>{k}</span>
-              <span style={{ fontSize:12,color:T.textSub,lineHeight:1.5 }}>{v}</span>
+          {showLopd && <>
+            {[
+              ["Responsable","Whanga Media Ltd · admin@whangamedia.com"],
+              ["Finalidad","Elaborar diagnóstico de madurez operacional y envío de resultados"],
+              ["Legitimación","Consentimiento del interesado (Art. 6.1.a RGPD)"],
+              ["Destinatarios","Sin cesiones a terceros salvo obligación legal. Encargados técnicos: Supabase EU y Anthropic API (CCT)"],
+            ].map(([k,v])=>(
+              <div key={k} style={{ display:"flex",padding:"9px 16px",borderBottom:`1px solid ${T.border}` }}>
+                <span style={{ fontSize:12,fontWeight:600,color:T.textMut,width:110,flexShrink:0,paddingTop:1 }}>{k}</span>
+                <span style={{ fontSize:12,color:T.textSub,lineHeight:1.5 }}>{v}</span>
+              </div>
+            ))}
+            <div style={{ display:"flex",padding:"9px 16px",borderBottom:`1px solid ${T.border}` }}>
+              <span style={{ fontSize:12,fontWeight:600,color:T.textMut,width:110,flexShrink:0,paddingTop:1 }}>Sus derechos</span>
+              <span style={{ fontSize:12,color:T.textSub,lineHeight:1.5 }}>Acceso, rectificación, supresión, limitación, portabilidad y oposición → <a href="mailto:admin@whangamedia.com?subject=Ejercicio%20de%20derechos%20RGPD" style={{ color:T.accent,textDecoration:"underline" }}>admin@whangamedia.com</a></span>
             </div>
-          ))}
-          <div style={{ padding:"9px 16px" }}>
-            <span style={{ fontSize:12,fontWeight:600,color:T.textMut,width:110,display:"inline-block" }}>Más info</span>
-            <button onClick={()=>setShowPrivacy(true)} style={{ fontSize:12,color:T.accent,background:"none",border:"none",cursor:"pointer",textDecoration:"underline",fontFamily:F.sans,padding:0 }}>
-              Política de privacidad completa →
-            </button>
-          </div>
+            <div style={{ padding:"9px 16px" }}>
+              <span style={{ fontSize:12,fontWeight:600,color:T.textMut,width:110,display:"inline-block" }}>Más info</span>
+              <button onClick={()=>setShowPrivacy(true)} style={{ fontSize:12,color:T.accent,background:"none",border:"none",cursor:"pointer",textDecoration:"underline",fontFamily:F.sans,padding:0 }}>
+                Política de privacidad completa →
+              </button>
+            </div>
+          </>}
         </div>
 
-        {/* Consents */}
-        {[
-          {id:"c1",label:"He leído y acepto la información básica sobre protección de datos.",req:true,key:"accepted"},
-          {id:"c2",label:"Acepto recibir comunicaciones comerciales de Whanga Media sobre automatización e IA.",req:false,key:"marketing"},
-        ].map(item=>(
-          <div key={item.id} onClick={()=>{
-            const next=!consent[item.key];
-            setConsent(c=>({...c,[item.key]:next,...(item.key==="accepted"?{ts:next?new Date().toISOString():null}:{})}));
-            if(item.key==="accepted") setConsentErr(false);
-          }} style={{ display:"flex",alignItems:"flex-start",gap:12,padding:"12px 14px",border:`1px solid ${consent[item.key]?T.accent:T.border}`,background:consent[item.key]?T.accentL:T.surface,borderRadius:8,cursor:"pointer",marginBottom:8,userSelect:"none",transition:"all 0.1s" }}>
-            <div style={{ width:16,height:16,borderRadius:4,border:`1.5px solid ${consent[item.key]?T.accent:T.border2}`,background:consent[item.key]?T.accent:"transparent",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:1 }}>
-              {consent[item.key] && <svg width="9" height="9" viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4" stroke={T.white} strokeWidth="1.5" strokeLinecap="round" fill="none"/></svg>}
-            </div>
-            <span style={{ fontSize:13,color:T.textSub,lineHeight:1.5 }}>
-              {item.label}
-              {item.req && <span style={{ color:T.danger,fontWeight:700,marginLeft:4 }}>*</span>}
-              {!item.req && <span style={{ color:T.textMut,marginLeft:4 }}>(opcional)</span>}
-            </span>
+        {/* Consent */}
+        <div onClick={()=>{
+          const next=!consent.accepted;
+          setConsent(c=>({...c,accepted:next,ts:next?new Date().toISOString():null}));
+          setConsentErr(false);
+        }} style={{ display:"flex",alignItems:"flex-start",gap:12,padding:"12px 14px",border:`1px solid ${consent.accepted?T.accent:T.border}`,background:consent.accepted?T.accentL:T.surface,borderRadius:8,cursor:"pointer",marginBottom:8,userSelect:"none",transition:"all 0.1s" }}>
+          <div style={{ width:16,height:16,borderRadius:4,border:`1.5px solid ${consent.accepted?T.accent:T.border2}`,background:consent.accepted?T.accent:"transparent",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:1 }}>
+            {consent.accepted && <svg width="9" height="9" viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4" stroke={T.white} strokeWidth="1.5" strokeLinecap="round" fill="none"/></svg>}
           </div>
-        ))}
+          <span style={{ fontSize:13,color:T.textSub,lineHeight:1.5 }}>
+            He leído y acepto la información básica sobre protección de datos.
+            <span style={{ color:T.danger,fontWeight:700,marginLeft:4 }}>*</span>
+          </span>
+        </div>
         {consentErr && <p style={{ fontSize:12,color:T.danger,marginBottom:12 }}>Es necesario aceptar la protección de datos para continuar.</p>}
 
         <button onClick={handleConsentNext} style={{ marginTop:16,width:"100%",padding:"14px 24px",background:`linear-gradient(135deg,${T.grad1},${T.grad2})`,color:T.white,border:"none",borderRadius:10,fontSize:15,fontWeight:600,cursor:"pointer",fontFamily:F.sans,letterSpacing:"-0.01em",boxShadow:`0 4px 14px ${T.accent}30` }}>
@@ -1524,23 +1525,36 @@ Incluye entre 3 y 5 procesos en priorities. Ordénalos por impacto económico re
 
         {/* Consent stamp */}
         <div style={{ background:T.bg,border:`1px solid ${T.border}`,borderRadius:8,padding:"10px 14px",fontSize:11,color:T.textMut,marginBottom:24,lineHeight:1.6 }}>
-          🔒 Consentimiento registrado · {consent.ts?new Date(consent.ts).toLocaleString("es-ES"):"-"} · Política v{CFG.privacyVer} · Marketing: {consent.marketing?"Sí":"No"} · Whanga Media Ltd
+          Consentimiento registrado · {consent.ts?new Date(consent.ts).toLocaleString("es-ES"):"-"} · Política v{CFG.privacyVer} · Whanga Media Ltd
         </div>
 
-        {/* CTAs */}
-        <div style={{ display:"flex",gap:10,flexWrap:"wrap" }}>
-          <button style={{ flex:1,minWidth:200,padding:"13px 20px",background:`linear-gradient(135deg,${T.grad1},${T.grad2})`,color:T.white,border:"none",borderRadius:8,fontSize:14,fontWeight:600,cursor:"pointer",fontFamily:F.sans }}
-            onClick={()=>{ if(window.sendPrompt) window.sendPrompt(`Genera una propuesta comercial detallada para ${contactCompany||sectorObj?.name} basada en este diagnóstico: índice ${normScore}/100, sector ${sectorObj?.name}, ROI estimado ${aiResult?.estimatedMonthlyROI||"a calcular"}, procesos prioritarios: ${(aiResult?.priorities||[]).map(p=>p.processName).join(", ")}`); }}>
-            Generar propuesta comercial ↗
-          </button>
-          <button style={{ padding:"13px 20px",background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,fontSize:14,color:T.textSub,cursor:"pointer",fontFamily:F.sans }}
-            onClick={()=>{ if(window.sendPrompt) window.sendPrompt(`Escribe un email de seguimiento post-reunión para el CEO de ${contactCompany||"la empresa"} adjuntando los resultados del diagnóstico: índice ${normScore}/100, ${lowAuto} procesos sin automatizar, ROI estimado ${aiResult?.estimatedMonthlyROI||""}`); }}>
-            Email de seguimiento ↗
-          </button>
-          <button style={{ padding:"13px 20px",background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,fontSize:14,color:T.textSub,cursor:"pointer",fontFamily:F.sans }}
-            onClick={()=>{ if(window.sendPrompt) window.sendPrompt(`¿Cuánto debería cobrar Whanga Media por implementar las automatizaciones del roadmap para ${contactCompany||sectorObj?.name}? Sector: ${sectorObj?.name}, equipo: ${["1-3","4-10","11-30","+30"][teamSize]||"no indicado"} personas, ROI estimado ${aiResult?.estimatedMonthlyROI||""}`); }}>
-            Calcular precio ↗
-          </button>
+        <button onClick={()=>goStep("thanks")} style={{ marginTop:24,width:"100%",padding:"14px 24px",background:`linear-gradient(135deg,${T.grad1},${T.grad2})`,color:T.white,border:"none",borderRadius:10,fontSize:15,fontWeight:600,cursor:"pointer",fontFamily:F.sans,letterSpacing:"-0.01em",boxShadow:`0 4px 14px ${T.accent}30` }}>
+          Finalizar
+        </button>
+      </div>
+    </div>
+  );
+
+  /* ── THANKS ───────────────────────────────────────────────────── */
+  if (phase==="thanks") return (
+    <div style={wrap}>
+      <style>{fontImport}</style>
+      <Header />
+      <div style={{ ...inner,paddingTop:80,paddingBottom:80,display:"flex",flexDirection:"column",alignItems:"center",textAlign:"center" }}>
+
+        {/* Check icon */}
+        <div style={{ width:80,height:80,borderRadius:"50%",background:`linear-gradient(135deg,${T.grad1},${T.grad2})`,display:"flex",alignItems:"center",justifyContent:"center",marginBottom:28,boxShadow:`0 8px 24px ${T.accent}30` }}>
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M10 18l6 6 10-10" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </div>
+
+        <h2 style={{ fontSize:26,fontWeight:700,color:T.text,marginBottom:10,letterSpacing:"-0.02em" }}>Gracias por usar el evaluador</h2>
+        <p style={{ fontSize:15,color:T.textSub,lineHeight:1.7,maxWidth:420 }}>
+          Tu diagn\u00f3stico ha sido completado y guardado correctamente.
+        </p>
+
+        {/* Consent stamp */}
+        <div style={{ background:T.bg,border:`1px solid ${T.border}`,borderRadius:8,padding:"10px 14px",fontSize:11,color:T.textMut,lineHeight:1.6,width:"100%",maxWidth:400 }}>
+          Consentimiento registrado \u00b7 {consent.ts?new Date(consent.ts).toLocaleString("es-ES"):"-"} \u00b7 Pol\u00edtica v{CFG.privacyVer} \u00b7 Whanga Media Ltd
         </div>
       </div>
     </div>
