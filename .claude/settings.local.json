@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -w \"\\\\nHTTP_CODE:%{http_code}\" \"https://sasupabase.whangamedia.com/rest/v1/appdiagnostico?select=id&limit=1\" -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzE1MDUwODAwLAogICJleHAiOiAxODcyODE3MjAwCn0.IC2ezMcB5WeQVBn9BoONGsY_Or7D-m3veWW_aTlt53M\" -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzE1MDUwODAwLAogICJleHAiOiAxODcyODE3MjAwCn0.IC2ezMcB5WeQVBn9BoONGsY_Or7D-m3veWW_aTlt53M\")",
+      "Bash(curl -s -w \"\\\\nHTTP_CODE:%{http_code}\" \"https://sasupabase.whangamedia.com/rest/v1/appdiagnostico\" -X POST -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzE1MDUwODAwLAogICJleHAiOiAxODcyODE3MjAwCn0.IC2ezMcB5WeQVBn9BoONGsY_Or7D-m3veWW_aTlt53M\" -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzE1MDUwODAwLAogICJleHAiOiAxODcyODE3MjAwCn0.IC2ezMcB5WeQVBn9BoONGsY_Or7D-m3veWW_aTlt53M\" -H \"Content-Type: application/json\" -H \"Prefer: return=representation\" -d '{\"\"contact_name\"\":\"\"test\"\",\"\"contact_email\"\":\"\"test@test.com\"\",\"\"company_name\"\":\"\"Test Co\"\"}')",
+      "Bash(curl -s -w \"\\\\nHTTP_CODE:%{http_code}\" \"https://sasupabase.whangamedia.com/rest/v1/\" -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzE1MDUwODAwLAogICJleHAiOiAxODcyODE3MjAwCn0.IC2ezMcB5WeQVBn9BoONGsY_Or7D-m3veWW_aTlt53M\" -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzE1MDUwODAwLAogICJleHAiOiAxODcyODE3MjAwCn0.IC2ezMcB5WeQVBn9BoONGsY_Or7D-m3veWW_aTlt53M\")",
+      "Bash(gh auth:*)"
+    ]
+  }
+}

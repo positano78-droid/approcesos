@@ -1,0 +1,7 @@
+name = "approcesos-ai-proxy"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+
+# Para dev local: npx wrangler dev
+# Para deploy:    npx wrangler deploy
+# Para secrets:   npx wrangler secret put ANTHROPIC_API_KEY
